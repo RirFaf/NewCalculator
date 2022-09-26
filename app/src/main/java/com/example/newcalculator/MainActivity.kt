@@ -1,107 +1,108 @@
 package com.example.newcalculator
 
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
-import android.view.View
-import android.widget.Button
 import com.example.newcalculator.databinding.ActivityMainBinding
 
-//import kotlinx.android.synthetic.main.activity_main.*
+class MainActivity() : AppCompatActivity(), Parcelable {
 
-
-class MainActivity : AppCompatActivity() {
-    private var isANumber = false
+    private var isANumber = true
     private lateinit var binding: ActivityMainBinding
     private val displayTV = binding.displayTV
+
+    constructor(parcel: Parcel) : this() {
+        isANumber = parcel.readByte() != 0.toByte()
+    }
 
     @Override
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         binding.oneBTN.setOnClickListener{
-            if (view is Button && isANumber) {
-                displayTV.append(view.text)
+            if (isANumber) {
+                displayTV.append(binding.oneBTN.text)
                 isANumber = true
             }
         }
         binding.twoBTN.setOnClickListener{
-            if (view is Button && isANumber) {
-                displayTV.append(view.text)
+            if (isANumber) {
+                displayTV.append(binding.twoBTN.text)
                 isANumber = true
             }
         }
         binding.threeBTN.setOnClickListener{
-            if (view is Button && isANumber) {
-                displayTV.append(view.text)
+            if (isANumber) {
+                displayTV.append(binding.threeBTN.text)
                 isANumber = true
             }
         }
         binding.fourBTN.setOnClickListener{
-            if (view is Button && isANumber) {
-                displayTV.append(view.text)
+            if (isANumber) {
+                displayTV.append(binding.fourBTN.text)
                 isANumber = true
             }
         }
         binding.fiveBTN.setOnClickListener{
-            if (view is Button && isANumber) {
-                displayTV.append(view.text)
+            if (isANumber) {
+                displayTV.append(binding.fiveBTN.text)
                 isANumber = true
             }
         }
         binding.sixBTN.setOnClickListener{
-            if (view is Button && isANumber) {
-                displayTV.append(view.text)
+            if (isANumber) {
+                displayTV.append(binding.sixBTN.text)
                 isANumber = true
             }
         }
         binding.sevenBTN.setOnClickListener{
-            if (view is Button && isANumber) {
-                displayTV.append(view.text)
+            if (isANumber) {
+                displayTV.append(binding.sevenBTN.text)
                 isANumber = true
             }
         }
         binding.eightBTN.setOnClickListener{
-            if (view is Button && isANumber) {
-                displayTV.append(view.text)
+            if (isANumber) {
+                displayTV.append(binding.eightBTN.text)
                 isANumber = true
             }
         }
         binding.nineBTN.setOnClickListener{
-            if (view is Button && isANumber) {
-                displayTV.append(view.text)
+            if (isANumber) {
+                displayTV.append(binding.nineBTN.text)
                 isANumber = true
             }
         }
         binding.zeroBTN.setOnClickListener{
-            if (view is Button && isANumber) {
-                displayTV.append(view.text)
+            if (isANumber) {
+                displayTV.append(binding.zeroBTN.text)
                 isANumber = true
             }
         }
         binding.addBTN.setOnClickListener{
-            if (view is androidx.appcompat.widget.AppCompatButton && isANumber) {
-                displayTV.append(view.text)
+            if (isANumber) {
+                displayTV.append(binding.addBTN.text)
                 isANumber = false
             }
         }
         binding.subtractBTN.setOnClickListener{
-            if (view is androidx.appcompat.widget.AppCompatButton && isANumber) {
-                displayTV.append(view.text)
+            if (isANumber) {
+                displayTV.append(binding.subtractBTN.text)
                 isANumber = false
             }
         }
         binding.multiplyBTN.setOnClickListener{
-            if (view is androidx.appcompat.widget.AppCompatButton && isANumber) {
-                displayTV.append(view.text)
+            if (isANumber) {
+                displayTV.append(binding.multiplyBTN.text)
                 isANumber = false
             }
         }
         binding.divideBTN.setOnClickListener{
-            if (view is androidx.appcompat.widget.AppCompatButton && isANumber) {
-                displayTV.append(view.text)
+            if (isANumber) {
+                displayTV.append(binding.divideBTN.text)
                 isANumber = false
             }
         }
@@ -118,34 +119,6 @@ class MainActivity : AppCompatActivity() {
             calculateResult()
         }
     }
-
-//    fun numberBTNAction(view: View) {
-//        if (view is androidx.appcompat.widget.AppCompatButton && isANumber) {
-//            displayTV.append(view.text)
-//            isANumber = true
-//        }
-//    }
-
-//    fun operatorBTNAction(view: View) {
-//        if (view is androidx.appcompat.widget.AppCompatButton && isANumber) {
-//            displayTV.append(view.text)
-//            isANumber = false
-//        }
-//    }
-
-//    fun clearBTNAction(view: View) {
-//        displayTV.text = "";
-//    }
-
-//    fun backspaceBTNAction(view: View) {
-//        if (displayTV.length() > 0) {
-//            displayTV.text = displayTV.text.subSequence(0, displayTV.length() - 1)
-//        }
-//    }
-
-//    fun resultBTNAction(view: View) {
-//        calculateResult()
-//    }
 
     private fun calculateResult(): String {
         val stml = stringToMutableList()
@@ -225,7 +198,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun stringToMutableList(): MutableList<Any> {
 
-        var list = mutableListOf<Any>()
+        val list = mutableListOf<Any>()
         var currentDigit = ""
 
         for (character in displayTV.text) {
@@ -242,5 +215,23 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return list
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeByte(if (isANumber) 1 else 0)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<MainActivity> {
+        override fun createFromParcel(parcel: Parcel): MainActivity {
+            return MainActivity(parcel)
+        }
+
+        override fun newArray(size: Int): Array<MainActivity?> {
+            return arrayOfNulls(size)
+        }
     }
 }
