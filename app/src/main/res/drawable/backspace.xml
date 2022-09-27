@@ -4,6 +4,5 @@
         android:drawable="@android:drawable/ic_input_delete"
         android:width="40dp"
         android:height="40dp"
-        android:tint="@color/black"
         />
 </selector>

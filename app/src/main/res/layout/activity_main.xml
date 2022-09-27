@@ -1,146 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:background="@color/black_almost"
+        tools:ignore="HardcodedText"
         tools:context=".MainActivity">
-
-
-    <TableLayout
-            android:id="@+id/tableLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.94">
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:padding="20dp">
 
-        <TableRow style="@style/tableRow">
+        <TextView
+                android:id="@+id/displayTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:lines="2"
+                android:maxLines="2"
+                android:textColor="@color/white"
+                android:textAlignment="textEnd"
+                android:textSize="25sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                    android:id="@+id/oneBTN"
-                    style="@style/button"
-                    android:text="@string/one" />
 
-            <Button
-                    android:id="@+id/twoBTN"
-                    style="@style/button"
-                    android:text="@string/two" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Button
-                    android:id="@+id/threeBTN"
-                    style="@style/button"
-                    android:text="@string/three" />
+    <LinearLayout
+            style="@style/buttonRow">
 
-            <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/addBTN"
-                    style="@style/button"
-                    android:text="@string/add" />
-        </TableRow>
+        <Button
+                style="@style/buttonNumber"
+                android:textColor="@color/yellow_honeycomb"
+                android:onClick="allClearAction"
+                android:text="AC"/>
+        <Button
+                style="@style/buttonNumber"
+                android:textColor="@color/yellow_honeycomb"
+                android:onClick="backSpaceAction"
+                android:text="⌫"/>
+        <Button
+                style="@style/buttonNumber"
+                android:text="" />
+        <Button
+                style="@style/buttonOperator"
+                android:text="/"/>
 
-        <TableRow style="@style/tableRow">
+    </LinearLayout>
 
-            <Button
-                    android:id="@+id/fourBTN"
-                    style="@style/button"
-                    android:text="@string/four" />
+    <LinearLayout
+            style="@style/buttonRow">
 
-            <Button
-                    android:id="@+id/fiveBTN"
-                    style="@style/button"
-                    android:text="@string/five" />
+        <Button
+                style="@style/buttonNumber"
+                android:text="7"/>
+        <Button
+                style="@style/buttonNumber"
+                android:text="8"/>
+        <Button
+                style="@style/buttonNumber"
+                android:text="9" />
+        <Button
+                style="@style/buttonOperator"
+                android:text="x"/>
 
-            <Button
-                    android:id="@+id/sixBTN"
-                    style="@style/button"
-                    android:text="@string/six" />
+    </LinearLayout>
 
-            <Button
-                    android:id="@+id/subtractBTN"
-                    style="@style/button"
-                    android:text="@string/subtract" />
-        </TableRow>
+    <LinearLayout
+            style="@style/buttonRow">
 
-        <TableRow style="@style/tableRow">
+        <Button
+                style="@style/buttonNumber"
+                android:text="4"/>
+        <Button
+                style="@style/buttonNumber"
+                android:text="5"/>
+        <Button
+                style="@style/buttonNumber"
+                android:text="6" />
+        <Button
+                style="@style/buttonOperator"
+                android:text="-"/>
 
-            <Button
-                    android:id="@+id/sevenBTN"
-                    style="@style/button"
-                    android:text="@string/seven" />
+    </LinearLayout>
 
-            <Button
-                    android:id="@+id/eightBTN"
-                    style="@style/button"
-                    android:text="@string/eight" />
+    <LinearLayout
+            style="@style/buttonRow">
 
-            <Button
-                    android:id="@+id/nineBTN"
-                    style="@style/button"
-                    android:text="@string/nine" />
+        <Button
+                style="@style/buttonNumber"
+                android:text="1"/>
+        <Button
+                style="@style/buttonNumber"
+                android:text="2"/>
+        <Button
+                style="@style/buttonNumber"
+                android:text="3" />
+        <Button
+                style="@style/buttonOperator"
+                android:text="+"/>
 
-            <Button
-                    android:id="@+id/multiplyBTN"
-                    style="@style/button"
-                    android:text="@string/multiply" />
-        </TableRow>
+    </LinearLayout>
 
-        <TableRow style="@style/tableRow">
+    <LinearLayout
+            style="@style/buttonRow">
+        <Button
+                style="@style/buttonNumber"
+                android:text="0"/>
+        <Button
+                style="@style/buttonNumber"
+                android:layout_weight="2"
+                android:background="@color/yellow_honeycomb"
+                android:textSize="40sp"
+                android:onClick="resultAction"
+                android:text="=" />
 
-            <Button
-                    android:id="@+id/resultBTN"
-                    style="@style/button"
-                    android:text="@string/result" />
+    </LinearLayout>
 
-            <Button
-                    android:id="@+id/zeroBTN"
-                    style="@style/button"
-                    android:text="@string/zero" />
 
-            <Button
-                    android:id="@+id/clearBTN"
-                    style="@style/button"
-                    android:text="@string/clear" />
 
-            <Button
-                    android:id="@+id/divideBTN"
-                    style="@style/button"
-                    android:text="@string/divide" />
-        </TableRow>
-    </TableLayout>
-
-    <TextView
-            android:id="@+id/displayTV"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:autofillHints="false"
-            android:inputType="none"
-            android:text=""
-            android:textAlignment="textEnd"
-            android:textColor="@color/white_almost"
-            android:textSize="36sp"
-            app:layout_constraintBottom_toTopOf="@+id/tableLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.24000001"
-            tools:ignore="LabelFor" />
-
-    <ImageButton
-            android:id="@+id/backspaceBTN"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:contentDescription="@string/backspace"
-            app:layout_constraintBottom_toTopOf="@+id/tableLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/backspace" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
