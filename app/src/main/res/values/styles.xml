@@ -14,7 +14,6 @@
         <item name="android:background">@null</item>
         <item name="android:textColor">@color/white_almost</item>
         <item name="android:textSize">40sp</item>
-        <item name="android:onClick">numberAction</item>
     </style>
 
     <style name="buttonOperator">
@@ -25,6 +24,5 @@
         <item name="android:background">@null</item>
         <item name="android:textColor">@color/yellow_honeycomb</item>
         <item name="android:textSize">40sp</item>
-        <item name="android:onClick">operatorAction</item>
     </style>
 </resources>
