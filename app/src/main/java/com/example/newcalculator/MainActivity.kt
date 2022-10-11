@@ -176,6 +176,40 @@ class MainActivity() : AppCompatActivity() {
             val length = workingTV.length()
             if (length > 0) {
                 workingTV.text = workingTV.text.subSequence(0, length - 1)
+
+                if (!operatorPressed && isANumber) {
+                    if (currentNumber != "") {
+                        firstNumber = currentNumber.toInt()
+                        currentNumber =
+                            currentNumber.subSequence(0, currentNumber.length - 1).toString()
+                    } else {
+                        firstNumber = null
+                    }
+                }
+
+                if (operatorPressed && isANumber) {
+
+                    if (currentNumber != "") {
+                        secondNumber = currentNumber.toInt()
+                        currentNumber =
+                            currentNumber.subSequence(0, currentNumber.length - 1).toString()
+                    } else {
+                        secondNumber = null
+                    }
+                }
+
+                if (operatorPressed && !isANumber) {
+                    operator = ""
+                    operatorPressed = false
+                    isANumber = true
+                }
+            } else {
+                firstNumber = null
+                secondNumber = null
+                operator = ""
+                currentNumber = ""
+                isANumber = false
+                operatorPressed = false
             }
         }
         resultBtn.setOnClickListener {
