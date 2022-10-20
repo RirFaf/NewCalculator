@@ -167,10 +167,21 @@ class MainActivity() : AppCompatActivity() {
         }
         clearBtn.setOnClickListener {
             workingTV.text = ""
+            isANumber = false
+            operatorPressed = false
+            currentNumber = ""
+            firstNumber = null
+            secondNumber = null
+
         }
         allClearBtn.setOnClickListener {
             workingTV.text = ""
             displayTV.text = ""
+            isANumber = false
+            operatorPressed = false
+            currentNumber = ""
+            firstNumber = null
+            secondNumber = null
         }
         backspaceBtn.setOnClickListener {
             val length = workingTV.length()
@@ -223,7 +234,6 @@ class MainActivity() : AppCompatActivity() {
             isANumber = false
             operatorPressed = false
         }
-
     }
 
     private fun calculateResult(x: Int, operator: String, y: Int): Int? {
